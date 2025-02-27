@@ -6,7 +6,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 
 function App() {
- git  const feedBackfromLocalStorage = () => {
+  const feedBackfromLocalStorage = () => {
     const savedFeedBack = localStorage.getItem("feedBackCounts");
     return savedFeedBack
       ? JSON.parse(savedFeedBack)
