@@ -4,13 +4,13 @@ const Feedback = ({ feedBackType, totalFeedBack, positiveFeedBack }) => {
   return (
     <ul className={styles.feedBackList}>
       <li className={styles.feedBackListItem}>
-        <p>Good: {feedBackType.Good}</p>
+        <p>Good: {feedBackType.good}</p>
       </li>
       <li className={styles.feedBackListItem}>
-        <p>Neutral: {feedBackType.Neutral}</p>
+        <p>Neutral: {feedBackType.neutral}</p>
       </li>
       <li className={styles.feedBackListItem}>
-        <p>Bad: {feedBackType.Bad}</p>
+        <p>Bad: {feedBackType.bad}</p>
       </li>
 
       <li className={styles.feedBackListItem}>

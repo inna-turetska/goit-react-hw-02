@@ -1,47 +1,55 @@
 import Options from "./Options/Options";
 import Feedback from "./Feedback/Feedback";
 import Notification from "./Notification/Notification";
+import Description from "./Description/Description";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [feedBackType, setFeedBackTypes] = useState({
-    Good: 0,
-    Neutral: 0,
-    Bad: 0,
-  });
+ git  const feedBackfromLocalStorage = () => {
+    const savedFeedBack = localStorage.getItem("feedBackCounts");
+    return savedFeedBack
+      ? JSON.parse(savedFeedBack)
+      : { good: 0, neutral: 0, bad: 0 };
+  };
+
+  const [feedBackType, setFeedBackTypes] = useState(feedBackfromLocalStorage);
 
   const updateFeedBack = (feedBackType) => {
-    setFeedBackTypes((prevState) => ({
-      ...prevState,
-      [feedBackType]: prevState[feedBackType] + 1,
-    }));
-  };
-  const resetFeedBack = () => {
-    setFeedBackTypes({
-      Good: 0,
-      Neutral: 0,
-      Bad: 0,
+    setFeedBackTypes((prevState) => {
+      const newState = {
+        ...prevState,
+        [feedBackType]: prevState[feedBackType] + 1,
+      };
+
+      localStorage.setItem("feedBackCounts", JSON.stringify(newState));
+      return newState;
     });
   };
 
+  const resetFeedBack = () => {
+    const resetState = { good: 0, neutral: 0, bad: 0 };
+    setFeedBackTypes(resetState);
+
+    localStorage.setItem("feedBackCounts", JSON.stringify(resetState));
+  };
+
   const totalFeedBack =
-    feedBackType.Good + feedBackType.Neutral + feedBackType.Bad;
-  const positiveFeedBack = Math.round(
-    (feedBackType.Good / totalFeedBack) * 100
-  );
+    feedBackType.good + feedBackType.neutral + feedBackType.bad;
+
+  const positiveFeedBack = totalFeedBack
+    ? Math.round((feedBackType.good / totalFeedBack) * 100)
+    : 0;
 
   const hasFeedBack = totalFeedBack > 0;
 
+  useEffect(() => {
+    localStorage.setItem("feedBackCounts", JSON.stringify(feedBackType));
+  }, [feedBackType]);
+
   return (
     <>
-      <div>
-        <h1>Sip Happens Café</h1>
-        <p>
-          Please leave your feedback about our service by selecting one of the
-          options below.
-        </p>
-      </div>
+      <Description />
       <Options
         feedBackType={feedBackType}
         upDateFeedback={updateFeedBack}

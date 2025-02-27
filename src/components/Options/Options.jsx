@@ -7,7 +7,7 @@ const Options = ({ upDateFeedback, totalFeedBack, resetFeedBack }) => {
         <li className={styles.buttonItem}>
           <button
             className={styles.button}
-            onClick={() => upDateFeedback("Good")}
+            onClick={() => upDateFeedback("good")}
           >
             Good
           </button>
@@ -15,7 +15,7 @@ const Options = ({ upDateFeedback, totalFeedBack, resetFeedBack }) => {
         <li className={styles.buttonItem}>
           <button
             className={styles.button}
-            onClick={() => upDateFeedback("Neutral")}
+            onClick={() => upDateFeedback("neutral")}
           >
             Neutral
           </button>
@@ -23,7 +23,7 @@ const Options = ({ upDateFeedback, totalFeedBack, resetFeedBack }) => {
         <li className={styles.buttonItem}>
           <button
             className={styles.button}
-            onClick={() => upDateFeedback("Bad")}
+            onClick={() => upDateFeedback("bad")}
           >
             Bad
           </button>
