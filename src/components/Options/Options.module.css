@@ -1,0 +1,38 @@
+.buttonList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+}
+.buttonItem {
+  list-style: none;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  border-color: transparent;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+.buttonReset {
+  background-color: #dc3545;
+}
+.buttonReset:hover {
+  background-color: #c82333;
+}
